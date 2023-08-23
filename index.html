@@ -2,6 +2,30 @@
 <html>
 <head>
   <style>
+    /* Your existing styles here */
+    /* ... */
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      width: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
     body {
       background-color: #f0f0f0;
       font-family: Arial, sans-serif;
@@ -26,12 +50,49 @@
       text-decoration: underline;
     }
   </style>
+  <script>
+    function openModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModa() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    function checkPassword() {
+      var password = document.getElementById("password").value;
+      if (password === "cdn.iswori.com.np=login") {
+        closeModa();
+        // You can show the content here
+        document.getElementById("content").style.display = "block";
+      } else {
+        alert("Incorrect password. Please try again.");
+      }
+    }
+  </script>
 </head>
 <body>
-  <div class="error-message">
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <label for="password">Password:</label>
+      <input type="password" id="password">
+      <button onclick="checkPassword()">Submit</button>
+    </div>
+  </div>
+
+  <!-- Content that will be shown after entering correct password -->
+  <div id="content" style="display: none;">
+    <div class="error-message">
+      <div class="error-message">
     404 Not Available!!!
   </div>
   <hr>
   <p>Visit <a class="link" href="https://www.iswori.com.np/">Iswori Education Official Site</a></p>
+  </div>
+
+  <!-- Trigger the password prompt -->
+  <script>
+    openModal();
+  </script>
 </body>
 </html>
